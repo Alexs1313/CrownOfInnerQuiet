@@ -9,12 +9,22 @@
 /* Begin PBXBuildFile section */
 		0C80B921A6F3F58F76C31292 /* libPods-CrownOfInnerQuiet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-CrownOfInnerQuiet.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		2BE17888A4CB4B60A83ECFEA /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD5B5AC6FBFB4102BE9FF977 /* Montserrat-Regular.ttf */; };
+		569734DC65AA4932AAB8A687 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F57461ACE7CB44F3993896B6 /* Montserrat-ExtraBold.ttf */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		77FFFF7867E7C7C2ED130BD0 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		C88626E769CE470EAF907440 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1C218EC371B4EA59D6281B9 /* Montserrat-Black.ttf */; };
+		D1A578C72F03B87D000B89C6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1A578C62F03B87D000B89C6 /* AVFoundation.framework */; };
+		D1A578C92F03B884000B89C6 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1A578C82F03B884000B89C6 /* AVKit.framework */; };
+		D1A578CB2F03B88A000B89C6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1A578CA2F03B88A000B89C6 /* AudioToolbox.framework */; };
+		D1A578CD2F0401DD000B89C6 /* 740607__sergequadrado__piano-for-meditation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1A578CC2F0401DD000B89C6 /* 740607__sergequadrado__piano-for-meditation.mp3 */; };
+		D614A5F2A44F40C9ADCECF3A /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 057D476E3B21466396BF318C /* Montserrat-Medium.ttf */; };
+		E6760FA179624C3FB1ECC0A2 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D52B39E9A1844F78A326E0F1 /* Montserrat-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		057D476E3B21466396BF318C /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Medium.ttf"; path = "../assets/fonts/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* CrownOfInnerQuiet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrownOfInnerQuiet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = CrownOfInnerQuiet/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CrownOfInnerQuiet/Info.plist; sourceTree = "<group>"; };
@@ -24,7 +34,15 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-CrownOfInnerQuiet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CrownOfInnerQuiet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = CrownOfInnerQuiet/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CrownOfInnerQuiet/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CD5B5AC6FBFB4102BE9FF977 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Regular.ttf"; path = "../assets/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		D1A578C62F03B87D000B89C6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D1A578C82F03B884000B89C6 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		D1A578CA2F03B88A000B89C6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		D1A578CC2F0401DD000B89C6 /* 740607__sergequadrado__piano-for-meditation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "740607__sergequadrado__piano-for-meditation.mp3"; sourceTree = "<group>"; };
+		D52B39E9A1844F78A326E0F1 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Bold.ttf"; path = "../assets/fonts/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F1C218EC371B4EA59D6281B9 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Black.ttf"; path = "../assets/fonts/Montserrat-Black.ttf"; sourceTree = "<group>"; };
+		F57461ACE7CB44F3993896B6 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-ExtraBold.ttf"; path = "../assets/fonts/Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +50,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1A578CB2F03B88A000B89C6 /* AudioToolbox.framework in Frameworks */,
+				D1A578C92F03B884000B89C6 /* AVKit.framework in Frameworks */,
+				D1A578C72F03B87D000B89C6 /* AVFoundation.framework in Frameworks */,
 				0C80B921A6F3F58F76C31292 /* libPods-CrownOfInnerQuiet.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,6 +75,9 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D1A578CA2F03B88A000B89C6 /* AudioToolbox.framework */,
+				D1A578C82F03B884000B89C6 /* AVKit.framework */,
+				D1A578C62F03B87D000B89C6 /* AVFoundation.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				5DCACB8F33CDC322A6C60F78 /* libPods-CrownOfInnerQuiet.a */,
 			);
@@ -75,6 +99,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				B2A321DB5F05417482DA853A /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -87,6 +112,19 @@
 				13B07F961A680F5B00A75B9A /* CrownOfInnerQuiet.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B2A321DB5F05417482DA853A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				057D476E3B21466396BF318C /* Montserrat-Medium.ttf */,
+				D52B39E9A1844F78A326E0F1 /* Montserrat-Bold.ttf */,
+				F57461ACE7CB44F3993896B6 /* Montserrat-ExtraBold.ttf */,
+				F1C218EC371B4EA59D6281B9 /* Montserrat-Black.ttf */,
+				CD5B5AC6FBFB4102BE9FF977 /* Montserrat-Regular.ttf */,
+				D1A578CC2F0401DD000B89C6 /* 740607__sergequadrado__piano-for-meditation.mp3 */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
@@ -159,8 +197,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				D1A578CD2F0401DD000B89C6 /* 740607__sergequadrado__piano-for-meditation.mp3 in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				77FFFF7867E7C7C2ED130BD0 /* PrivacyInfo.xcprivacy in Resources */,
+				D614A5F2A44F40C9ADCECF3A /* Montserrat-Medium.ttf in Resources */,
+				E6760FA179624C3FB1ECC0A2 /* Montserrat-Bold.ttf in Resources */,
+				569734DC65AA4932AAB8A687 /* Montserrat-ExtraBold.ttf in Resources */,
+				C88626E769CE470EAF907440 /* Montserrat-Black.ttf in Resources */,
+				2BE17888A4CB4B60A83ECFEA /* Montserrat-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
