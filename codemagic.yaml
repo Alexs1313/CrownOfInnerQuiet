@@ -13,7 +13,7 @@ workflows:
         BUNDLE_ID: com.CrownOfInnerQuiet
         XCODE_WORKSPACE: CrownOfInnerQuiet.xcworkspace
         XCODE_SCHEME: CrownOfInnerQuiet
-        APP_STORE_APPLE_ID: 6755671523
+        APP_STORE_APPLE_ID: 6757442607
     scripts:
       - name: Install npm dependencies
         script: |
