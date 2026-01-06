@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import {
   Animated,
   Image,
@@ -10,22 +10,22 @@ import {
   TextInput,
   KeyboardAvoidingView,
 } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 
 // Local imports
 import CrownOfInnerQuietLayout from '../CrownOfInnerQuietComponents/CrownOfInnerQuietLayout';
 import CrownButton from '../CrownOfInnerQuietComponents/CrownButton';
+import { useStorage } from '../CrownOfInnerQuietStorage/crownOfInnerQuietContext';
 
 const CrownOfInnerQuietDiary = () => {
   const navigation = useNavigation();
-  const [note, setNote] = useState('');
+  const { note, setNote, saveNoteWithDate } = useStorage();
 
   const backButtonAnim = useRef(new Animated.Value(0)).current;
-  const imgAnim = useRef(new Animated.Value(0)).current;
-  const titleAnim = useRef(new Animated.Value(0)).current;
-  const quoteAnim = useRef(new Animated.Value(0)).current;
-  const buttonAnim = useRef(new Animated.Value(0)).current;
+  const imgAnimation = useRef(new Animated.Value(0)).current;
+  const titleAnimation = useRef(new Animated.Value(0)).current;
+  const quoteAnimation = useRef(new Animated.Value(0)).current;
+  const buttonAnimation = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     const duration = 380;
@@ -37,24 +37,34 @@ const CrownOfInnerQuietDiary = () => {
         duration,
         useNativeDriver: true,
       }),
-      Animated.timing(imgAnim, { toValue: 1, duration, useNativeDriver: true }),
-      Animated.timing(titleAnim, {
+      Animated.timing(imgAnimation, {
         toValue: 1,
         duration,
         useNativeDriver: true,
       }),
-      Animated.timing(quoteAnim, {
+      Animated.timing(titleAnimation, {
         toValue: 1,
         duration,
         useNativeDriver: true,
       }),
-      Animated.timing(buttonAnim, {
+      Animated.timing(quoteAnimation, {
+        toValue: 1,
+        duration,
+        useNativeDriver: true,
+      }),
+      Animated.timing(buttonAnimation, {
         toValue: 1,
         duration,
         useNativeDriver: true,
       }),
     ]).start();
-  }, [backButtonAnim, imgAnim, titleAnim, quoteAnim, buttonAnim]);
+  }, [
+    backButtonAnim,
+    imgAnimation,
+    titleAnimation,
+    quoteAnimation,
+    buttonAnimation,
+  ]);
 
   const animatedCrownBoxStyle = (animValue, offset = 18) => ({
     opacity: animValue,
@@ -73,41 +83,6 @@ const CrownOfInnerQuietDiary = () => {
       },
     ],
   });
-
-  const formatatedDate = (day = new Date()) => {
-    const crownDay = String(day.getDate()).padStart(2, '0');
-
-    const crownMonth = String(day.getMonth() + 1).padStart(2, '0');
-
-    const crownYear = day.getFullYear();
-
-    return `${crownDay}/${crownMonth}/${crownYear}`;
-  };
-
-  const saveNoteWithDate = async () => {
-    try {
-      const entryCrownObj = {
-        note: note.trim(),
-        date: formatatedDate(),
-      };
-
-      const saved = await AsyncStorage.getItem('crown_diary_entries');
-      const isExisting = saved ? JSON.parse(saved) : [];
-
-      isExisting.push(entryCrownObj);
-
-      await AsyncStorage.setItem(
-        'crown_diary_entries',
-        JSON.stringify(isExisting),
-      );
-
-      setNote('');
-
-      navigation.popToTop();
-    } catch (e) {
-      console.warn('Error saving:', e);
-    }
-  };
 
   return (
     <CrownOfInnerQuietLayout>
@@ -132,14 +107,14 @@ const CrownOfInnerQuietDiary = () => {
           </Animated.View>
 
           <Animated.View
-            style={[animatedCrownBoxStyle(imgAnim, 28), styles.crownWrap]}
+            style={[animatedCrownBoxStyle(imgAnimation, 28), styles.crownWrap]}
           >
             <Image source={require('../../assets/imgs/nicknameimg.png')} />
           </Animated.View>
 
           <Animated.View
             style={[
-              animatedCrownBoxStyle(titleAnim, 20),
+              animatedCrownBoxStyle(titleAnimation, 20),
               { alignItems: 'center', width: '100%' },
             ]}
           >
@@ -148,7 +123,7 @@ const CrownOfInnerQuietDiary = () => {
 
             <Animated.View
               style={[
-                animatedCrownBoxStyle(quoteAnim, 16),
+                animatedCrownBoxStyle(quoteAnimation, 16),
                 styles.crownTextBox,
               ]}
             >
@@ -168,7 +143,10 @@ const CrownOfInnerQuietDiary = () => {
             <View style={{ marginTop: 18, width: '100%' }}>
               <CrownButton
                 propsLabel={'Save'}
-                propsOnPress={saveNoteWithDate}
+                propsOnPress={() => {
+                  saveNoteWithDate();
+                  navigation.popToTop();
+                }}
                 isDisabled={!note.trim()}
                 buttonW={'100%'}
                 buttonH={67}

@@ -23,11 +23,11 @@ const CrownOfInnerQuietEntry = ({ route }) => {
   const { crownNickname } = route.params ?? '';
   const [completedSteps, setCompletedSteps] = useState(0);
 
-  const backAnim = useRef(new Animated.Value(0)).current;
-  const imgAnim = useRef(new Animated.Value(0)).current;
-  const titleAnim = useRef(new Animated.Value(0)).current;
-  const quoteAnim = useRef(new Animated.Value(0)).current;
-  const buttonAnim = useRef(new Animated.Value(0)).current;
+  const backAnimation = useRef(new Animated.Value(0)).current;
+  const imgAnimation = useRef(new Animated.Value(0)).current;
+  const titleAnimation = useRef(new Animated.Value(0)).current;
+  const quoteAnimation = useRef(new Animated.Value(0)).current;
+  const buttonAnimation = useRef(new Animated.Value(0)).current;
 
   useFocusEffect(
     useCallback(() => {
@@ -55,29 +55,39 @@ const CrownOfInnerQuietEntry = ({ route }) => {
 
     const crownStagger = 90;
     Animated.stagger(crownStagger, [
-      Animated.timing(backAnim, {
+      Animated.timing(backAnimation, {
         toValue: 1,
         duration,
         useNativeDriver: true,
       }),
-      Animated.timing(imgAnim, { toValue: 1, duration, useNativeDriver: true }),
-      Animated.timing(titleAnim, {
+      Animated.timing(imgAnimation, {
         toValue: 1,
         duration,
         useNativeDriver: true,
       }),
-      Animated.timing(quoteAnim, {
+      Animated.timing(titleAnimation, {
         toValue: 1,
         duration,
         useNativeDriver: true,
       }),
-      Animated.timing(buttonAnim, {
+      Animated.timing(quoteAnimation, {
+        toValue: 1,
+        duration,
+        useNativeDriver: true,
+      }),
+      Animated.timing(buttonAnimation, {
         toValue: 1,
         duration,
         useNativeDriver: true,
       }),
     ]).start();
-  }, [backAnim, imgAnim, titleAnim, quoteAnim, buttonAnim]);
+  }, [
+    backAnimation,
+    imgAnimation,
+    titleAnimation,
+    quoteAnimation,
+    buttonAnimation,
+  ]);
 
   const animatedCrownBoxStyle = (animValue, offset = 18) => ({
     opacity: animValue,
@@ -156,7 +166,7 @@ const CrownOfInnerQuietEntry = ({ route }) => {
       <View style={styles.crownBox}>
         <Animated.View
           style={[
-            animatedCrownBoxStyle(backAnim, 6),
+            animatedCrownBoxStyle(backAnimation, 6),
             { alignSelf: 'flex-start', marginBottom: 10 },
           ]}
         >
@@ -170,21 +180,24 @@ const CrownOfInnerQuietEntry = ({ route }) => {
         </Animated.View>
 
         <Animated.View
-          style={[animatedCrownBoxStyle(imgAnim, 28), styles.crownWrap]}
+          style={[animatedCrownBoxStyle(imgAnimation, 28), styles.crownWrap]}
         >
           <Image source={require('../../assets/imgs/nicknameimg.png')} />
         </Animated.View>
 
         <Animated.View
           style={[
-            animatedCrownBoxStyle(titleAnim, 20),
+            animatedCrownBoxStyle(titleAnimation, 20),
             { alignItems: 'center', width: '100%' },
           ]}
         >
           <Text style={styles.crownLabel}>Good morning, {crownNickname}!</Text>
 
           <Animated.View
-            style={[animatedCrownBoxStyle(quoteAnim, 16), styles.crownTextBox]}
+            style={[
+              animatedCrownBoxStyle(quoteAnimation, 16),
+              styles.crownTextBox,
+            ]}
           >
             <Text style={styles.crownLabel}>Quote of the day:</Text>
             <Animated.Text

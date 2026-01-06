@@ -44,29 +44,28 @@ const CrownOfInnerQuietOnboarding = () => {
   const [crownCurrentStep, setCrownCurrentStep] = useState(0);
   const navigation = useNavigation();
 
-  const imgAnim = useRef(new Animated.Value(0)).current;
-  const labelAnim = useRef(new Animated.Value(0)).current;
-  const subtitleAnim = useRef(new Animated.Value(0)).current;
-  const buttonAnim = useRef(new Animated.Value(0)).current;
-  const paginationAnim = useRef(new Animated.Value(0)).current;
+  const imgAnimation = useRef(new Animated.Value(0)).current;
+  const labelAnimation = useRef(new Animated.Value(0)).current;
+  const subtitleAnimation = useRef(new Animated.Value(0)).current;
+  const buttonAnimation = useRef(new Animated.Value(0)).current;
+  const paginationAnimation = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    imgAnim.setValue(0);
-    labelAnim.setValue(0);
-    subtitleAnim.setValue(0);
-
+    imgAnimation.setValue(0);
+    labelAnimation.setValue(0);
+    subtitleAnimation.setValue(0);
     Animated.stagger(90, [
-      Animated.timing(imgAnim, {
+      Animated.timing(imgAnimation, {
         toValue: 1,
         duration: 360,
         useNativeDriver: true,
       }),
-      Animated.timing(labelAnim, {
+      Animated.timing(labelAnimation, {
         toValue: 1,
         duration: 360,
         useNativeDriver: true,
       }),
-      Animated.timing(subtitleAnim, {
+      Animated.timing(subtitleAnimation, {
         toValue: 1,
         duration: 360,
         useNativeDriver: true,
@@ -76,27 +75,27 @@ const CrownOfInnerQuietOnboarding = () => {
 
   useEffect(() => {
     Animated.stagger(120, [
-      Animated.timing(imgAnim, {
+      Animated.timing(imgAnimation, {
         toValue: 1,
         duration: 420,
         useNativeDriver: true,
       }),
-      Animated.timing(labelAnim, {
+      Animated.timing(labelAnimation, {
         toValue: 1,
         duration: 420,
         useNativeDriver: true,
       }),
-      Animated.timing(subtitleAnim, {
+      Animated.timing(subtitleAnimation, {
         toValue: 1,
         duration: 420,
         useNativeDriver: true,
       }),
-      Animated.timing(buttonAnim, {
+      Animated.timing(buttonAnimation, {
         toValue: 1,
         duration: 420,
         useNativeDriver: true,
       }),
-      Animated.timing(paginationAnim, {
+      Animated.timing(paginationAnimation, {
         toValue: 1,
         duration: 420,
         useNativeDriver: true,
@@ -108,29 +107,39 @@ const CrownOfInnerQuietOnboarding = () => {
     const duration = 420;
     const crownStagger = 120;
     Animated.stagger(crownStagger, [
-      Animated.timing(imgAnim, { toValue: 1, duration, useNativeDriver: true }),
-      Animated.timing(labelAnim, {
+      Animated.timing(imgAnimation, {
         toValue: 1,
         duration,
         useNativeDriver: true,
       }),
-      Animated.timing(subtitleAnim, {
+      Animated.timing(labelAnimation, {
         toValue: 1,
         duration,
         useNativeDriver: true,
       }),
-      Animated.timing(buttonAnim, {
+      Animated.timing(subtitleAnimation, {
         toValue: 1,
         duration,
         useNativeDriver: true,
       }),
-      Animated.timing(paginationAnim, {
+      Animated.timing(buttonAnimation, {
+        toValue: 1,
+        duration,
+        useNativeDriver: true,
+      }),
+      Animated.timing(paginationAnimation, {
         toValue: 1,
         duration,
         useNativeDriver: true,
       }),
     ]).start();
-  }, [imgAnim, labelAnim, subtitleAnim, buttonAnim, paginationAnim]);
+  }, [
+    imgAnimation,
+    labelAnimation,
+    subtitleAnimation,
+    buttonAnimation,
+    paginationAnimation,
+  ]);
 
   const animatedStyle = (animValue, offset = 14) => ({
     opacity: animValue,
@@ -153,19 +162,21 @@ const CrownOfInnerQuietOnboarding = () => {
   return (
     <CrownOfInnerQuietLayout>
       <View style={styles.crownBox}>
-        <Animated.View style={[animatedStyle(imgAnim, 28), styles.centerItem]}>
+        <Animated.View
+          style={[animatedStyle(imgAnimation, 28), styles.centerItem]}
+        >
           <Image source={crownIntroData[crownCurrentStep].crwnimage} />
         </Animated.View>
 
         <View style={{ bottom: 150, alignItems: 'center' }}>
           <Animated.View
-            style={[animatedStyle(labelAnim, 20), styles.crownTextBox]}
+            style={[animatedStyle(labelAnimation, 20), styles.crownTextBox]}
           >
             <Text style={styles.crownLabel}>
               {crownIntroData[crownCurrentStep].crwnlabel}
             </Text>
             <Animated.Text
-              style={[styles.crownSubtitle, { opacity: subtitleAnim }]}
+              style={[styles.crownSubtitle, { opacity: subtitleAnimation }]}
               allowFontScaling={true}
               adjustsFontSizeToFit={Platform.OS === 'ios'}
             >
@@ -174,7 +185,7 @@ const CrownOfInnerQuietOnboarding = () => {
           </Animated.View>
 
           <Animated.View
-            style={[animatedStyle(buttonAnim, 12), { marginTop: 18 }]}
+            style={[animatedStyle(buttonAnimation, 12), { marginTop: 18 }]}
           >
             <CrownButton
               propsLabel={crownIntroData[crownCurrentStep].crwnbutton}
@@ -183,7 +194,7 @@ const CrownOfInnerQuietOnboarding = () => {
           </Animated.View>
 
           <Animated.View
-            style={[animatedStyle(paginationAnim, 8), { marginTop: 18 }]}
+            style={[animatedStyle(paginationAnimation, 8), { marginTop: 18 }]}
           >
             <CrownPagination crownCurrentStep={crownCurrentStep} />
           </Animated.View>
