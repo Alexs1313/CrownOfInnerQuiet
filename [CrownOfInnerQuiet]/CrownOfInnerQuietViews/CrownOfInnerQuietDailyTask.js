@@ -16,6 +16,10 @@ import { setTodayProgress } from '../CrownOfInnerQuietUtils/progress';
 import { crownOfInnerQuiteTasks } from '../CrownOfInnerQuietData/crownOfInnerQuiteTasks';
 
 const msPerDay = 24 * 60 * 60 * 1000;
+const boldF = 'Montserrat-Bold';
+const mediumF = 'Montserrat-Medium';
+const primaryWhite = '#FFFFFF';
+const secondaryWhite = '#FFFFFFCC';
 
 const CrownOfInnerQuietDailyTask = ({ route }) => {
   const navigation = useNavigation();
@@ -313,48 +317,48 @@ const styles = StyleSheet.create({
   },
   crownLabel: {
     fontSize: 22,
-    fontFamily: 'Montserrat-Bold',
+    fontFamily: boldF,
     marginBottom: 6,
     marginTop: 10,
-    color: '#fff',
+    color: primaryWhite,
     textAlign: 'center',
   },
   crownSubtitle: {
     fontSize: 20,
-    fontFamily: 'Montserrat-Medium',
+    fontFamily: mediumF,
     color: '#0B1020',
     textAlign: 'center',
     marginTop: 6,
   },
   taskText: {
     fontSize: 20,
-    fontFamily: 'Montserrat-Bold',
+    fontFamily: boldF,
     color: '#000',
     textAlign: 'center',
     lineHeight: 26,
   },
   completedTitle: {
     fontSize: 22,
-    fontFamily: 'Montserrat-Bold',
-    color: '#fff',
+    fontFamily: boldF,
+    color: primaryWhite,
     textAlign: 'center',
     paddingHorizontal: 12,
   },
   quoteLabel: {
     marginTop: 8,
     fontSize: 14,
-    color: '#FFFFFF99',
+    color: secondaryWhite,
     textAlign: 'center',
   },
   quoteText: {
     marginTop: 6,
     fontSize: 14,
-    color: '#FFFFFFCC',
+    color: secondaryWhite,
     textAlign: 'center',
     paddingHorizontal: 12,
   },
   resetText: {
-    color: '#FFFFFF99',
+    color: secondaryWhite,
     fontSize: 13,
   },
 });

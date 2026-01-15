@@ -29,7 +29,10 @@ const CrownLoader = () => {
         style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
       >
         {showCrownIntroLogo ? (
-          <Image source={require('../../assets/imgs/loaderLogo.png')} />
+          <Image
+            source={require('../../assets/imgs/loaderLogo.png')}
+            style={{ width: 350, height: 350 }}
+          />
         ) : (
           <CrownWebView
             originWhitelist={['*']}

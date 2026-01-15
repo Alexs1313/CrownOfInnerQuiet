@@ -17,6 +17,10 @@ import { crownOfInnerQuietQuotes } from '../CrownOfInnerQuietData/crownOfInnerQu
 import { getTodayProgress } from '../CrownOfInnerQuietUtils/progress';
 
 const msPerDay = 24 * 60 * 60 * 1000;
+const boldF = 'Montserrat-Bold';
+const mediumF = 'Montserrat-Medium';
+const primaryWhite = '#FFFFFF';
+const secondaryWhite = '#FFFFFFCC';
 
 const CrownOfInnerQuietEntry = ({ route }) => {
   const navigation = useNavigation();
@@ -244,15 +248,15 @@ const styles = StyleSheet.create({
   },
   crownLabel: {
     fontSize: 24,
-    fontFamily: 'Montserrat-Bold',
+    fontFamily: boldF,
     marginBottom: 6,
     marginTop: 10,
-    color: '#fff',
+    color: primaryWhite,
     textAlign: 'center',
   },
   crownSubtitle: {
     fontSize: 20,
-    fontFamily: 'Montserrat-Medium',
+    fontFamily: mediumF,
     color: '#0B1020',
     textAlign: 'center',
     marginTop: 6,
@@ -263,7 +267,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   activeLabel: {
-    color: '#FFFFFF99',
+    color: secondaryWhite,
     fontSize: 13,
     marginBottom: 8,
   },
@@ -279,7 +283,7 @@ const styles = StyleSheet.create({
     color: '#0B1020',
     fontSize: 16,
     lineHeight: 22,
-    fontFamily: 'Montserrat-Medium',
+    fontFamily: mediumF,
     textAlign: 'center',
   },
   stepWrapper: {

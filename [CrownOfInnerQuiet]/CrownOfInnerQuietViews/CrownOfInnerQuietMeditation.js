@@ -22,6 +22,10 @@ const MeditationTracks = [
   '740607__sergequadrado__piano-for-meditation.mp3',
   '740609__sergequadrado__relaxing-meditation.mp3',
 ];
+const boldF = 'Montserrat-Bold';
+const mediumF = 'Montserrat-Medium';
+const primaryWhite = '#FFFFFF';
+const secondaryWhite = '#FFFFFFCC';
 
 const CrownOfInnerQuietMeditation = () => {
   const navigation = useNavigation();
@@ -493,18 +497,18 @@ const styles = StyleSheet.create({
   },
   crownLabel: {
     fontSize: 24,
-    fontFamily: 'Montserrat-Bold',
+    fontFamily: boldF,
     marginBottom: 10,
     marginTop: 12,
-    color: '#fff',
+    color: primaryWhite,
     textAlign: 'center',
   },
   subtitle: {
-    color: '#FFFFFF',
+    color: primaryWhite,
     marginTop: 6,
     fontSize: 20,
     textAlign: 'center',
-    fontFamily: 'Montserrat-Medium',
+    fontFamily: mediumF,
   },
   waveContainer: {
     width: '100%',
@@ -523,7 +527,7 @@ const styles = StyleSheet.create({
     width: 6,
     height: 20,
     borderRadius: 3,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: primaryWhite,
     marginHorizontal: 2,
     transform: [{ scaleY: 0.6 }],
   },
@@ -531,7 +535,7 @@ const styles = StyleSheet.create({
     width: 84,
     height: 84,
     borderRadius: 42,
-    backgroundColor: '#fff',
+    backgroundColor: primaryWhite,
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 6,
@@ -571,17 +575,17 @@ const styles = StyleSheet.create({
   },
   completedTitle: {
     fontSize: 24,
-    fontFamily: 'Montserrat-Bold',
-    color: '#fff',
+    fontFamily: boldF,
+    color: primaryWhite,
     textAlign: 'center',
     paddingHorizontal: 12,
   },
   completedSubtitle: {
     fontSize: 20,
-    color: '#FFFFFF',
+    color: primaryWhite,
     textAlign: 'center',
     marginTop: 8,
-    fontFamily: 'Montserrat-Medium',
+    fontFamily: mediumF,
     paddingHorizontal: 22,
   },
 });

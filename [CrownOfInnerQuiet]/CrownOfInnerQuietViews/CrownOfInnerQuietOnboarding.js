@@ -14,6 +14,10 @@ import CrownOfInnerQuietLayout from '../CrownOfInnerQuietComponents/CrownOfInner
 import CrownButton from '../CrownOfInnerQuietComponents/CrownButton';
 import CrownPagination from '../CrownOfInnerQuietComponents/CrownPagination';
 
+const boldF = 'Montserrat-Bold';
+const mediumF = 'Montserrat-Medium';
+const secondaryWhite = '#FFFFFFCC';
+
 const crownIntroData = [
   {
     crwnimage: require('../../assets/imgs/onboard1.png'),
@@ -36,7 +40,7 @@ const crownIntroData = [
     crwnlabel: `Inner Strength Lives
 in Silence`,
     crwnsubtitle:
-      'Crown of Inner Quiet is not about control. It’s about awareness, calm, and clarity.',
+      'WoltTres: Inner Quiet is not about control. It’s about awareness, calm, and clarity.',
   },
 ];
 
@@ -223,14 +227,14 @@ const styles = StyleSheet.create({
   },
   crownLabel: {
     fontSize: 24,
-    fontFamily: 'Montserrat-Bold',
+    fontFamily: boldF,
     marginBottom: 10,
     color: '#0B1020',
     textAlign: 'center',
   },
   crownSubtitle: {
     fontSize: 18,
-    fontFamily: 'Montserrat-Medium',
+    fontFamily: mediumF,
     color: '#0B1020',
     textAlign: 'center',
   },
@@ -238,7 +242,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 8,
     borderRadius: 5,
-    backgroundColor: '#FFFFFF4D',
+    backgroundColor: secondaryWhite,
   },
   crownPagination: {
     flexDirection: 'row',

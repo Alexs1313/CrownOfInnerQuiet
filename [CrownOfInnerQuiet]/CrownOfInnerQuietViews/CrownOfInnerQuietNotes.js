@@ -18,6 +18,10 @@ import { useNavigation } from '@react-navigation/native';
 import CrownOfInnerQuietLayout from '../CrownOfInnerQuietComponents/CrownOfInnerQuietLayout';
 import { useStorage } from '../CrownOfInnerQuietStorage/crownOfInnerQuietContext';
 
+const boldF = 'Montserrat-Bold';
+const mediumF = 'Montserrat-Medium';
+const primaryWhite = '#FFFFFF';
+
 const CrownOfInnerQuietNotes = () => {
   const navigation = useNavigation();
   const { loadCrownNotes, entries } = useStorage();
@@ -219,8 +223,8 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '700',
     marginBottom: 50,
-    color: '#FFFFFF',
-    fontFamily: 'Montserrat-SemiBold',
+    color: primaryWhite,
+    fontFamily: boldF,
     textAlign: 'center',
   },
   card: {
@@ -234,7 +238,7 @@ const styles = StyleSheet.create({
     color: '#0B1020',
     fontSize: 16,
     lineHeight: 22,
-    fontFamily: 'Montserrat-Medium',
+    fontFamily: mediumF,
   },
   cardFooter: {
     marginTop: 12,
@@ -244,7 +248,7 @@ const styles = StyleSheet.create({
     color: '#0B1020',
     fontSize: 16,
     textAlign: 'center',
-    fontFamily: 'Montserrat-Medium',
+    fontFamily: mediumF,
     position: 'absolute',
     alignSelf: 'center',
     bottom: 0,
@@ -270,10 +274,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   emptyText: {
-    color: '#FFFFFF',
+    color: primaryWhite,
     fontSize: 16,
     marginBottom: 12,
-    fontFamily: 'Montserrat-Medium',
+    fontFamily: mediumF,
   },
   emptyButton: {
     backgroundColor: '#9FC7FF',

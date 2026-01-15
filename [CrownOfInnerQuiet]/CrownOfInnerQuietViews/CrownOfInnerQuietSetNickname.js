@@ -15,6 +15,11 @@ import { useNavigation } from '@react-navigation/native';
 import CrownOfInnerQuietLayout from '../CrownOfInnerQuietComponents/CrownOfInnerQuietLayout';
 import CrownButton from '../CrownOfInnerQuietComponents/CrownButton';
 
+const boldF = 'Montserrat-Bold';
+const mediumF = 'Montserrat-Medium';
+const primaryWhite = '#FFFFFF';
+const secondaryWhite = '#FFFFFFCC';
+
 const CrownOfInnerQuietSetNickname = () => {
   const [crownNickname, setCrownNickname] = useState('');
   const navigation = useNavigation();
@@ -139,18 +144,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 16,
     fontSize: 18,
-    fontFamily: 'Montserrat-Medium',
+    fontFamily: mediumF,
   },
   crownLabel: {
     fontSize: 24,
-    fontFamily: 'Montserrat-Bold',
+    fontFamily: boldF,
     marginTop: 51,
-    color: '#fff',
+    color: primaryWhite,
     textAlign: 'center',
   },
   crownSubtitle: {
     fontSize: 18,
-    fontFamily: 'Montserrat-Medium',
+    fontFamily: mediumF,
     color: '#0B1020',
     textAlign: 'center',
   },
@@ -158,7 +163,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 8,
     borderRadius: 5,
-    backgroundColor: '#FFFFFF4D',
+    backgroundColor: secondaryWhite,
   },
   crownPagination: {
     flexDirection: 'row',
