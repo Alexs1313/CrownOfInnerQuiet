@@ -75,6 +75,8 @@ const CrownOfInnerQuietOnboarding = () => {
         useNativeDriver: true,
       }),
     ]).start();
+
+    console.log('start anim');
   }, [crownCurrentStep]);
 
   useEffect(() => {

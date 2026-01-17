@@ -20,8 +20,8 @@ const CrownOfInnerQuietStackNative = () => {
         component={CrownLoader}
       />
       <CrownOfInnerQuietStack.Screen
-        name="CrownOfInnerQuietOnboarding"
-        component={CrownOfInnerQuietOnboarding}
+        name="CrownOfInnerQuietOnboardig"
+        component={CrownOfInnerQuietOnboardig}
       />
       <CrownOfInnerQuietStack.Screen
         name="CrownOfInnerQuietSetNickname"
