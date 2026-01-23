@@ -7,7 +7,7 @@ const CrownButton = ({
   buttonH = 53,
   isDisabled = false,
   isFlexStart = false,
-  btnColor = '#93C2FA',
+  btnColor = '#61a1efff',
 }) => {
   return (
     <Pressable
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
   },
   crownStartButton: {
-    backgroundColor: '#93C2FA',
+    backgroundColor: '#579aecff',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,

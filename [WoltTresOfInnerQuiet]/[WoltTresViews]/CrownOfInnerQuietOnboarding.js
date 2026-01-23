@@ -10,9 +10,9 @@ import {
 import { useNavigation } from '@react-navigation/native';
 
 // Local imports
-import CrownOfInnerQuietLayout from '../CrownOfInnerQuietComponents/CrownOfInnerQuietLayout';
-import CrownButton from '../CrownOfInnerQuietComponents/CrownButton';
-import CrownPagination from '../CrownOfInnerQuietComponents/CrownPagination';
+import CrownOfInnerQuietLayout from '../[InnerQuietComponents]/CrownOfInnerQuietLayout';
+import CrownButton from '../[InnerQuietComponents]/CrownButton';
+import CrownPagination from '../[InnerQuietComponents]/CrownPagination';
 
 const boldF = 'Montserrat-Bold';
 const mediumF = 'Montserrat-Medium';

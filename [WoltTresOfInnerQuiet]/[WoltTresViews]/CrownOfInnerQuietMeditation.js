@@ -14,9 +14,9 @@ import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import Sound from 'react-native-sound';
 
 // Local imports
-import CrownOfInnerQuietLayout from '../CrownOfInnerQuietComponents/CrownOfInnerQuietLayout';
-import CrownButton from '../CrownOfInnerQuietComponents/CrownButton';
-import { setTodayProgress } from '../CrownOfInnerQuietUtils/progress';
+import CrownOfInnerQuietLayout from '../[InnerQuietComponents]/CrownOfInnerQuietLayout';
+import CrownButton from '../[InnerQuietComponents]/CrownButton';
+import { setTodayProgress } from '../[TresUtils]/progress';
 
 const MeditationTracks = [
   '740607__sergequadrado__piano-for-meditation.mp3',

@@ -1,14 +1,14 @@
 import { createStackNavigator } from '@react-navigation/stack';
 
 // Local imports
-import CrownOfInnerQuietEntry from '../CrownOfInnerQuietViews/CrownOfInnerQuietEntry';
-import CrownOfInnerQuietOnboarding from '../CrownOfInnerQuietViews/CrownOfInnerQuietOnboarding';
-import CrownOfInnerQuietSetNickname from '../CrownOfInnerQuietViews/CrownOfInnerQuietSetNickname';
-import CrownOfInnerQuietDailyTask from '../CrownOfInnerQuietViews/CrownOfInnerQuietDailyTask';
-import CrownOfInnerQuietMeditation from '../CrownOfInnerQuietViews/CrownOfInnerQuietMeditation';
-import CrownOfInnerQuietDiary from '../CrownOfInnerQuietViews/CrownOfInnerQuietDiary';
-import CrownOfInnerQuietNotes from '../CrownOfInnerQuietViews/CrownOfInnerQuietNotes';
-import CrownLoader from '../CrownOfInnerQuietComponents/CrownLoader';
+import CrownOfInnerQuietEntry from '../[WoltTresViews]/CrownOfInnerQuietEntry';
+import CrownOfInnerQuietOnboarding from '../[WoltTresViews]/CrownOfInnerQuietOnboarding';
+import CrownOfInnerQuietSetNickname from '../[WoltTresViews]/CrownOfInnerQuietSetNickname';
+import CrownOfInnerQuietDailyTask from '../[WoltTresViews]/CrownOfInnerQuietDailyTask';
+import CrownOfInnerQuietMeditation from '../[WoltTresViews]/CrownOfInnerQuietMeditation';
+import CrownOfInnerQuietDiary from '../[WoltTresViews]/CrownOfInnerQuietDiary';
+import CrownOfInnerQuietNotes from '../[WoltTresViews]/CrownOfInnerQuietNotes';
+import CrownLoader from '../[InnerQuietComponents]/CrownLoader';
 
 const CrownOfInnerQuietStack = createStackNavigator();
 
@@ -20,8 +20,8 @@ const CrownOfInnerQuietStackNative = () => {
         component={CrownLoader}
       />
       <CrownOfInnerQuietStack.Screen
-        name="CrownOfInnerQuietOnboardig"
-        component={CrownOfInnerQuietOnboardig}
+        name="CrownOfInnerQuietOnboarding"
+        component={CrownOfInnerQuietOnboarding}
       />
       <CrownOfInnerQuietStack.Screen
         name="CrownOfInnerQuietSetNickname"

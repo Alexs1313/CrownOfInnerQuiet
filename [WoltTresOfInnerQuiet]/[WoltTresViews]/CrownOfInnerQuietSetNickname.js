@@ -12,8 +12,8 @@ import {
 import { useNavigation } from '@react-navigation/native';
 
 // Local imports
-import CrownOfInnerQuietLayout from '../CrownOfInnerQuietComponents/CrownOfInnerQuietLayout';
-import CrownButton from '../CrownOfInnerQuietComponents/CrownButton';
+import CrownOfInnerQuietLayout from '../[InnerQuietComponents]/CrownOfInnerQuietLayout';
+import CrownButton from '../[InnerQuietComponents]/CrownButton';
 
 const boldF = 'Montserrat-Bold';
 const mediumF = 'Montserrat-Medium';

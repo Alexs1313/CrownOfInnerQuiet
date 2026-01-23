@@ -4,7 +4,7 @@ import { WebView as CrownWebView } from 'react-native-webview';
 
 // Local imports
 import CrownOfInnerQuietLayout from './CrownOfInnerQuietLayout';
-import { crownIntroLoader } from '../CrownOfInnerQuietData/crownIntroLoader';
+import { crownIntroLoader } from '../[WoltTresData]/crownIntroLoader';
 import { useNavigation } from '@react-navigation/native';
 
 const CrownLoader = () => {

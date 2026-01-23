@@ -10,10 +10,10 @@ import {
 import { useNavigation } from '@react-navigation/native';
 
 // Local imports
-import CrownOfInnerQuietLayout from '../CrownOfInnerQuietComponents/CrownOfInnerQuietLayout';
-import CrownButton from '../CrownOfInnerQuietComponents/CrownButton';
-import { setTodayProgress } from '../CrownOfInnerQuietUtils/progress';
-import { crownOfInnerQuiteTasks } from '../CrownOfInnerQuietData/crownOfInnerQuiteTasks';
+import CrownOfInnerQuietLayout from '../[InnerQuietComponents]/CrownOfInnerQuietLayout';
+import CrownButton from '../[InnerQuietComponents]/CrownButton';
+import { setTodayProgress } from '../[TresUtils]/progress';
+import { crownOfInnerQuiteTasks } from '../[WoltTresData]/crownOfInnerQuiteTasks';
 
 const msPerDay = 24 * 60 * 60 * 1000;
 const boldF = 'Montserrat-Bold';

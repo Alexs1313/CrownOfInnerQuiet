@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { StoreProvider } from './[CrownOfInnerQuiet]/CrownOfInnerQuietStorage/crownOfInnerQuietContext';
-import CrownOfInnerQuietStackNative from './[CrownOfInnerQuiet]/CrownOfInnerQuietRoutes/CrownOfInnerQuietStackNative';
+import { StoreProvider } from './[WoltTresOfInnerQuiet]/[InnerWoltQuietStorage]/crownOfInnerQuietContext';
+import CrownOfInnerQuietStackNative from './[WoltTresOfInnerQuiet]/[TresInnerQuietRoutes]/CrownOfInnerQuietStackNative';
 
 const App = () => {
   return (

@@ -15,8 +15,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 
 // Local imports
-import CrownOfInnerQuietLayout from '../CrownOfInnerQuietComponents/CrownOfInnerQuietLayout';
-import { useStorage } from '../CrownOfInnerQuietStorage/crownOfInnerQuietContext';
+import CrownOfInnerQuietLayout from '../[InnerQuietComponents]/CrownOfInnerQuietLayout';
+import { useStorage } from '../[InnerWoltQuietStorage]/crownOfInnerQuietContext';
 
 const boldF = 'Montserrat-Bold';
 const mediumF = 'Montserrat-Medium';

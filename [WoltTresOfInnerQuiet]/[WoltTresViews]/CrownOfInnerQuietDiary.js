@@ -13,9 +13,9 @@ import {
 import { useNavigation } from '@react-navigation/native';
 
 // Local imports
-import CrownOfInnerQuietLayout from '../CrownOfInnerQuietComponents/CrownOfInnerQuietLayout';
-import CrownButton from '../CrownOfInnerQuietComponents/CrownButton';
-import { useStorage } from '../CrownOfInnerQuietStorage/crownOfInnerQuietContext';
+import CrownOfInnerQuietLayout from '../[InnerQuietComponents]/CrownOfInnerQuietLayout';
+import CrownButton from '../[InnerQuietComponents]/CrownButton';
+import { useStorage } from '../[InnerWoltQuietStorage]/crownOfInnerQuietContext';
 
 const CrownOfInnerQuietDiary = () => {
   const navigation = useNavigation();
