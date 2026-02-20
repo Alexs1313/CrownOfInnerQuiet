@@ -30,9 +30,8 @@ const CrownButton = ({
 
 const styles = StyleSheet.create({
   ispressed: {
-    transform: [{ translateY: 2 }],
-    elevation: 1,
-    shadowOffset: { width: 0, height: 1 },
+    transform: [{ scale: 0.97 }],
+    opacity: 0.9,
   },
   crownStartButton: {
     backgroundColor: '#579aecff',

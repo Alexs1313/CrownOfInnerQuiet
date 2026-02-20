@@ -16,13 +16,13 @@ import { useNavigation } from '@react-navigation/native';
 
 // Local imports
 import CrownOfInnerQuietLayout from '../[InnerQuietComponents]/CrownOfInnerQuietLayout';
-import { useStorage } from '../[InnerWoltQuietStorage]/crownOfInnerQuietContext';
+import { useStorage } from '../[InnerWoltQuietStorage]/Context';
 
 const boldF = 'Montserrat-Bold';
 const mediumF = 'Montserrat-Medium';
 const primaryWhite = '#FFFFFF';
 
-const CrownOfInnerQuietNotes = () => {
+const Notesscrn = () => {
   const navigation = useNavigation();
   const { loadCrownNotes, entries } = useStorage();
   const [refreshing, setRefreshing] = useState(false);
@@ -78,6 +78,19 @@ const CrownOfInnerQuietNotes = () => {
         style: 'destructive',
         onPress: async () => {
           try {
+            const cardAnimValue =
+              listAnimValues[indexReversed] ?? new Animated.Value(1);
+            listAnimValues[indexReversed] = cardAnimValue;
+
+            await new Promise(resolve => {
+              Animated.timing(cardAnimValue, {
+                toValue: 0,
+                duration: 200,
+                easing: Easing.out(Easing.cubic),
+                useNativeDriver: true,
+              }).start(() => resolve());
+            });
+
             const svdNotes = await AsyncStorage.getItem('crown_diary_entries');
 
             const parsedJSON = svdNotes ? JSON.parse(svdNotes) : [];
@@ -116,9 +129,16 @@ const CrownOfInnerQuietNotes = () => {
       outputRange: [12, 0],
     });
     const opacity = anim;
+    const scale = anim.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0.94, 1],
+    });
     return (
       <Animated.View
-        style={[styles.cardWrapper, { opacity, transform: [{ translateY }] }]}
+        style={[
+          styles.cardWrapper,
+          { opacity, transform: [{ translateY }, { scale }] },
+        ]}
       >
         <View style={styles.card}>
           <Text numberOfLines={6} style={styles.cardText}>
@@ -131,14 +151,20 @@ const CrownOfInnerQuietNotes = () => {
             <View style={styles.actions}>
               <Pressable
                 onPress={() => handleShareNote(item)}
-                style={styles.iconButton}
+                style={({ pressed }) => [
+                  styles.iconButton,
+                  pressed && styles.iconButtonPressed,
+                ]}
               >
                 <Image source={require('../../assets/imgs/shareIcon.png')} />
               </Pressable>
 
               <Pressable
                 onPress={() => handleDeleteNote(index)}
-                style={styles.iconButton}
+                style={({ pressed }) => [
+                  styles.iconButton,
+                  pressed && styles.iconButtonPressed,
+                ]}
               >
                 <Image source={require('../../assets/imgs/deleteIcon.png')} />
               </Pressable>
@@ -266,6 +292,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 6,
   },
+  iconButtonPressed: {
+    transform: [{ scale: 0.93 }],
+    opacity: 0.8,
+  },
   icon: {
     fontSize: 18,
   },
@@ -291,4 +321,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CrownOfInnerQuietNotes;
+export default Notesscrn;

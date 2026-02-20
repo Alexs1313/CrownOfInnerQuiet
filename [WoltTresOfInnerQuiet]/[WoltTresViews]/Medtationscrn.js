@@ -25,9 +25,8 @@ const MeditationTracks = [
 const boldF = 'Montserrat-Bold';
 const mediumF = 'Montserrat-Medium';
 const primaryWhite = '#FFFFFF';
-const secondaryWhite = '#FFFFFFCC';
 
-const CrownOfInnerQuietMeditation = () => {
+const Medtationscrn = () => {
   const navigation = useNavigation();
   const [isPlaying, setIsPlaying] = useState(false);
   const [completed, setCompleted] = useState(false);
@@ -313,7 +312,7 @@ const CrownOfInnerQuietMeditation = () => {
               <CrownButton
                 propsLabel={'To the diary'}
                 propsOnPress={() =>
-                  navigation.navigate('CrownOfInnerQuietDiary', {
+                  navigation.navigate('Diaryscrn', {
                     crownNickname: '',
                   })
                 }
@@ -445,7 +444,13 @@ const CrownOfInnerQuietMeditation = () => {
           ]}
         >
           <View style={{ marginTop: 18 }}>
-            <Pressable onPress={handleTogglePlay} style={styles.playButton}>
+            <Pressable
+              onPress={handleTogglePlay}
+              style={({ pressed }) => [
+                styles.playButton,
+                pressed && styles.playButtonPressed,
+              ]}
+            >
               <View style={styles.playIconContainer}>
                 {!isPlaying ? (
                   <View style={styles.playTriangle} />
@@ -544,6 +549,10 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.18,
     shadowRadius: 12,
   },
+  playButtonPressed: {
+    transform: [{ scale: 0.96 }],
+    opacity: 0.88,
+  },
   playIconContainer: {
     width: 36,
     height: 36,
@@ -590,4 +599,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CrownOfInnerQuietMeditation;
+export default Medtationscrn;

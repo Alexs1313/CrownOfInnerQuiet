@@ -5,14 +5,17 @@ import {
   StyleSheet,
   Text,
   View,
-  Pressable,
+  Pressable as Buttn,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 // Local imports
 import CrownOfInnerQuietLayout from '../[InnerQuietComponents]/CrownOfInnerQuietLayout';
+
 import CrownButton from '../[InnerQuietComponents]/CrownButton';
+
 import { setTodayProgress } from '../[TresUtils]/progress';
+
 import { crownOfInnerQuiteTasks } from '../[WoltTresData]/crownOfInnerQuiteTasks';
 
 const msPerDay = 24 * 60 * 60 * 1000;
@@ -21,7 +24,7 @@ const mediumF = 'Montserrat-Medium';
 const primaryWhite = '#FFFFFF';
 const secondaryWhite = '#FFFFFFCC';
 
-const CrownOfInnerQuietDailyTask = ({ route }) => {
+const Dailytsksscrn = ({ route }) => {
   const navigation = useNavigation();
   const { crownNickname } = route.params ?? {};
   const intervalRef = useRef(null);
@@ -36,6 +39,9 @@ const CrownOfInnerQuietDailyTask = ({ route }) => {
   const titleAnim = useRef(new Animated.Value(0)).current;
   const quoteAnim = useRef(new Animated.Value(0)).current;
   const buttonAnim = useRef(new Animated.Value(0)).current;
+  const timerPulseAnim = useRef(new Animated.Value(1)).current;
+  const doneBounceAnim = useRef(new Animated.Value(1)).current;
+  const timerPulseLoopRef = useRef(null);
 
   useEffect(() => {
     const duration = 380;
@@ -97,8 +103,61 @@ const CrownOfInnerQuietDailyTask = ({ route }) => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
       }
+      if (timerPulseLoopRef.current) {
+        timerPulseLoopRef.current.stop();
+        timerPulseLoopRef.current = null;
+      }
     };
   }, []);
+
+  useEffect(() => {
+    if (isRunning) {
+      timerPulseAnim.setValue(1);
+      timerPulseLoopRef.current = Animated.loop(
+        Animated.sequence([
+          Animated.timing(timerPulseAnim, {
+            toValue: 1.02,
+            duration: 900,
+            useNativeDriver: true,
+          }),
+          Animated.timing(timerPulseAnim, {
+            toValue: 1,
+            duration: 900,
+            useNativeDriver: true,
+          }),
+        ]),
+      );
+      timerPulseLoopRef.current.start();
+    } else {
+      if (timerPulseLoopRef.current) {
+        timerPulseLoopRef.current.stop();
+        timerPulseLoopRef.current = null;
+      }
+      timerPulseAnim.setValue(1);
+    }
+  }, [isRunning, timerPulseAnim]);
+
+  useEffect(() => {
+    if (timerFinished) {
+      doneBounceAnim.setValue(0.98);
+      Animated.sequence([
+        Animated.spring(doneBounceAnim, {
+          toValue: 1.04,
+          friction: 5,
+          tension: 120,
+          useNativeDriver: true,
+        }),
+        Animated.spring(doneBounceAnim, {
+          toValue: 1,
+          friction: 6,
+          tension: 100,
+          useNativeDriver: true,
+        }),
+      ]).start();
+    } else {
+      doneBounceAnim.setValue(1);
+    }
+  }, [timerFinished, doneBounceAnim]);
 
   const animatedCrownBoxStyle = (animValue, offset = 18) => ({
     opacity: animValue,
@@ -176,13 +235,13 @@ const CrownOfInnerQuietDailyTask = ({ route }) => {
               { alignSelf: 'flex-start', marginBottom: 10 },
             ]}
           >
-            <Pressable
+            <Buttn
               onPress={() => navigation.popToTop()}
               hitSlop={8}
               style={({ pressed }) => [pressed && styles.ispressed]}
             >
               <Image source={require('../../assets/imgs/goBackBtn.png')} />
-            </Pressable>
+            </Buttn>
           </Animated.View>
           <Animated.View
             style={[animatedCrownBoxStyle(imgAnim, 28), styles.crownWrap]}
@@ -205,7 +264,7 @@ const CrownOfInnerQuietDailyTask = ({ route }) => {
               <CrownButton
                 propsLabel={'Go to meditation'}
                 propsOnPress={() =>
-                  navigation.navigate('CrownOfInnerQuietMeditation', {
+                  navigation.navigate('Medtationscrn', {
                     crownNickname,
                   })
                 }
@@ -228,13 +287,13 @@ const CrownOfInnerQuietDailyTask = ({ route }) => {
             { alignSelf: 'flex-start', marginBottom: 10 },
           ]}
         >
-          <Pressable
+          <Buttn
             onPress={() => navigation.popToTop()}
             hitSlop={8}
             style={({ pressed }) => [pressed && styles.ispressed]}
           >
             <Image source={require('../../assets/imgs/goBackBtn.png')} />
-          </Pressable>
+          </Buttn>
         </Animated.View>
 
         <Animated.View
@@ -266,17 +325,25 @@ const CrownOfInnerQuietDailyTask = ({ route }) => {
                 buttonH={67}
               />
             ) : (
-              <CrownButton
-                propsLabel={formattedCrownTime(seconds)}
-                propsOnPress={() => {}}
-                buttonW={'100%'}
-                buttonH={67}
-                btnColor={'#EED8A3'}
-              />
+              <Animated.View style={{ transform: [{ scale: timerPulseAnim }] }}>
+                <CrownButton
+                  propsLabel={formattedCrownTime(seconds)}
+                  propsOnPress={() => {}}
+                  buttonW={'100%'}
+                  buttonH={67}
+                  btnColor={'#EED8A3'}
+                />
+              </Animated.View>
             )}
           </View>
 
-          <View style={{ marginTop: 10, width: '100%' }}>
+          <Animated.View
+            style={{
+              marginTop: 10,
+              width: '100%',
+              transform: [{ scale: doneBounceAnim }],
+            }}
+          >
             <CrownButton
               propsLabel={'Done'}
               propsOnPress={handleDone}
@@ -284,7 +351,7 @@ const CrownOfInnerQuietDailyTask = ({ route }) => {
               buttonW={'100%'}
               buttonH={67}
             />
-          </View>
+          </Animated.View>
         </Animated.View>
       </View>
     </CrownOfInnerQuietLayout>
@@ -363,4 +430,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CrownOfInnerQuietDailyTask;
+export default Dailytsksscrn;

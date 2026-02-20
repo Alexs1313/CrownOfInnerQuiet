@@ -7,7 +7,7 @@ export const useStorage = () => {
   return useContext(StoreContext);
 };
 
-export const StoreProvider = ({ children }) => {
+export const ContextRoot = ({ children }) => {
   const [entries, setEntries] = useState([]);
   const [note, setNote] = useState('');
 

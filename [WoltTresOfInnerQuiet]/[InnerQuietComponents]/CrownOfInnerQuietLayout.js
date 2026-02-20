@@ -1,9 +1,10 @@
 import { ImageBackground, ScrollView } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 const CrownOfInnerQuietLayout = ({ children }) => {
   return (
-    <ImageBackground
-      source={require('../../assets/imgs/background.png')}
+    <LinearGradient
+      colors={['rgb(15, 8, 66)', 'rgb(6, 4, 21)']}
       style={{ flex: 1 }}
     >
       <ScrollView
@@ -12,7 +13,7 @@ const CrownOfInnerQuietLayout = ({ children }) => {
       >
         {children}
       </ScrollView>
-    </ImageBackground>
+    </LinearGradient>
   );
 };
 

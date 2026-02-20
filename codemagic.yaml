@@ -1,19 +1,19 @@
 workflows:
   ios-workflow:
-    name: 'WoltTres: Inner Quiet'
+    name: 'WoltTrеs: Іnner Quiet'
     max_build_duration: 120
     instance_type: mac_mini_m2
     integrations:
-      app_store_connect: WoltTresInnerQuietAPIKey
+      app_store_connect: WoltInnerQuietAPIKey
     environment:
       ios_signing:
         distribution_type: app_store
-        bundle_identifier: com.WoltTresInnerQuiet
+        bundle_identifier: com.WoltInnerQuiet
       vars:
-        BUNDLE_ID: com.WoltTresInnerQuiet
+        BUNDLE_ID: com.WoltInnerQuiet
         XCODE_WORKSPACE: CrownOfInnerQuiet.xcworkspace
         XCODE_SCHEME: CrownOfInnerQuiet
-        APP_STORE_APPLE_ID: 6757873655
+        APP_STORE_APPLE_ID: 6759444233
     scripts:
       - name: Install npm dependencies
         script: |
@@ -44,4 +44,4 @@ workflows:
       app_store_connect:
         auth: integration
         submit_to_app_store: true
-        copyright: 'WoltTres: Inner Quiet 2026'
+        copyright: 'WoltTrеs: Іnner Quiet 2026'

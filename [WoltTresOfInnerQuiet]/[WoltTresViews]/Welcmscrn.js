@@ -22,7 +22,7 @@ const mediumF = 'Montserrat-Medium';
 const primaryWhite = '#FFFFFF';
 const secondaryWhite = '#FFFFFFCC';
 
-const CrownOfInnerQuietEntry = ({ route }) => {
+const Welcmscrn = ({ route }) => {
   const navigation = useNavigation();
   const { crownNickname } = route.params ?? '';
   const [completedSteps, setCompletedSteps] = useState(0);
@@ -32,6 +32,10 @@ const CrownOfInnerQuietEntry = ({ route }) => {
   const titleAnimation = useRef(new Animated.Value(0)).current;
   const quoteAnimation = useRef(new Animated.Value(0)).current;
   const buttonAnimation = useRef(new Animated.Value(0)).current;
+  const activePulse = useRef(new Animated.Value(0)).current;
+  const activeStepBounce = useRef(new Animated.Value(1)).current;
+  const activePulseLoopRef = useRef(null);
+  const prevCompletedStepsRef = useRef(null);
 
   useFocusEffect(
     useCallback(() => {
@@ -123,12 +127,74 @@ const CrownOfInnerQuietEntry = ({ route }) => {
   const todaysCrownQuote = crownOfInnerQuietQuotes[currentQuoteIndex];
 
   const activeStep = Math.min(completedSteps + 1, 3);
+  const activeStepScale = activePulse.interpolate({
+    inputRange: [0, 1],
+    outputRange: [1, 1.015],
+  });
+  const activeCombinedScale = Animated.multiply(
+    activeStepScale,
+    activeStepBounce,
+  );
+
+  useEffect(() => {
+    if (activePulseLoopRef.current) {
+      activePulseLoopRef.current.stop();
+      activePulseLoopRef.current = null;
+    }
+
+    activePulse.setValue(0);
+    activePulseLoopRef.current = Animated.loop(
+      Animated.sequence([
+        Animated.timing(activePulse, {
+          toValue: 1,
+          duration: 1400,
+          useNativeDriver: true,
+        }),
+        Animated.timing(activePulse, {
+          toValue: 0,
+          duration: 1400,
+          useNativeDriver: true,
+        }),
+      ]),
+    );
+    activePulseLoopRef.current.start();
+
+    return () => {
+      if (activePulseLoopRef.current) {
+        activePulseLoopRef.current.stop();
+        activePulseLoopRef.current = null;
+      }
+      activePulse.setValue(0);
+    };
+  }, [activeStep, activePulse]);
+
+  useEffect(() => {
+    const prevCompleted = prevCompletedStepsRef.current;
+    if (prevCompleted !== null && prevCompleted !== completedSteps) {
+      activeStepBounce.setValue(1);
+      Animated.sequence([
+        Animated.spring(activeStepBounce, {
+          toValue: 1.05,
+          friction: 5,
+          tension: 130,
+          useNativeDriver: true,
+        }),
+        Animated.spring(activeStepBounce, {
+          toValue: 1,
+          friction: 6,
+          tension: 110,
+          useNativeDriver: true,
+        }),
+      ]).start();
+    }
+    prevCompletedStepsRef.current = completedSteps;
+  }, [completedSteps, activeStepBounce]);
 
   const goToCrownSection = stepNumber => {
     if (stepNumber === activeStep) {
-      if (stepNumber === 1) navigation.navigate('CrownOfInnerQuietDailyTask');
-      if (stepNumber === 2) navigation.navigate('CrownOfInnerQuietMeditation');
-      if (stepNumber === 3) navigation.navigate('CrownOfInnerQuietDiary');
+      if (stepNumber === 1) navigation.navigate('Dailytsksscrn');
+      if (stepNumber === 2) navigation.navigate('Medtationscrn');
+      if (stepNumber === 3) navigation.navigate('Diaryscrn');
     }
   };
 
@@ -147,11 +213,18 @@ const CrownOfInnerQuietEntry = ({ route }) => {
     ];
 
     return (
-      <View
+      <Animated.View
         style={{ marginTop: 15, width: '100%' }}
         key={`step-${stepCrownNumber}`}
       >
-        <View style={wrapperStyle}>
+        <Animated.View
+          style={[
+            wrapperStyle,
+            isButtonActive
+              ? { transform: [{ scale: activeCombinedScale }] }
+              : null,
+          ]}
+        >
           <CrownButton
             propsLabel={label}
             buttonW={'100%'}
@@ -160,8 +233,8 @@ const CrownOfInnerQuietEntry = ({ route }) => {
             propsOnPress={() => goToCrownSection(stepCrownNumber)}
             disabled={disabled}
           />
-        </View>
-      </View>
+        </Animated.View>
+      </Animated.View>
     );
   };
 
@@ -175,7 +248,7 @@ const CrownOfInnerQuietEntry = ({ route }) => {
           ]}
         >
           <Pressable
-            onPress={() => navigation.navigate('CrownOfInnerQuietNotes')}
+            onPress={() => navigation.navigate('Notesscrn')}
             hitSlop={8}
             style={({ pressed }) => [pressed && styles.ispressed]}
           >
@@ -315,4 +388,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CrownOfInnerQuietEntry;
+export default Welcmscrn;

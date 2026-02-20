@@ -6,6 +6,7 @@ import {
   Text,
   View,
   Platform,
+  Easing,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
@@ -44,145 +45,99 @@ in Silence`,
   },
 ];
 
-const CrownOfInnerQuietOnboarding = () => {
+const Introducescrn = () => {
   const [crownCurrentStep, setCrownCurrentStep] = useState(0);
   const navigation = useNavigation();
 
-  const imgAnimation = useRef(new Animated.Value(0)).current;
-  const labelAnimation = useRef(new Animated.Value(0)).current;
-  const subtitleAnimation = useRef(new Animated.Value(0)).current;
-  const buttonAnimation = useRef(new Animated.Value(0)).current;
-  const paginationAnimation = useRef(new Animated.Value(0)).current;
+  const entranceProgress = useRef(new Animated.Value(0)).current;
+  const entranceAnimRef = useRef(null);
 
   useEffect(() => {
-    imgAnimation.setValue(0);
-    labelAnimation.setValue(0);
-    subtitleAnimation.setValue(0);
-    Animated.stagger(90, [
-      Animated.timing(imgAnimation, {
-        toValue: 1,
-        duration: 360,
-        useNativeDriver: true,
-      }),
-      Animated.timing(labelAnimation, {
-        toValue: 1,
-        duration: 360,
-        useNativeDriver: true,
-      }),
-      Animated.timing(subtitleAnimation, {
-        toValue: 1,
-        duration: 360,
-        useNativeDriver: true,
-      }),
-    ]).start();
+    if (entranceAnimRef.current) {
+      entranceAnimRef.current.stop();
+      entranceAnimRef.current = null;
+    }
 
-    console.log('start anim');
-  }, [crownCurrentStep]);
+    entranceProgress.setValue(0);
+    entranceAnimRef.current = Animated.timing(entranceProgress, {
+      toValue: 1,
+      duration: 1200,
+      easing: Easing.bezier(0.2, 0.85, 0.3, 1),
+      useNativeDriver: true,
+    });
+    entranceAnimRef.current.start(() => {
+      entranceAnimRef.current = null;
+    });
 
-  useEffect(() => {
-    Animated.stagger(120, [
-      Animated.timing(imgAnimation, {
-        toValue: 1,
-        duration: 420,
-        useNativeDriver: true,
-      }),
-      Animated.timing(labelAnimation, {
-        toValue: 1,
-        duration: 420,
-        useNativeDriver: true,
-      }),
-      Animated.timing(subtitleAnimation, {
-        toValue: 1,
-        duration: 420,
-        useNativeDriver: true,
-      }),
-      Animated.timing(buttonAnimation, {
-        toValue: 1,
-        duration: 420,
-        useNativeDriver: true,
-      }),
-      Animated.timing(paginationAnimation, {
-        toValue: 1,
-        duration: 420,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  }, []);
+    return () => {
+      if (entranceAnimRef.current) {
+        entranceAnimRef.current.stop();
+        entranceAnimRef.current = null;
+      }
+    };
+  }, [crownCurrentStep, entranceProgress]);
 
-  useEffect(() => {
-    const duration = 420;
-    const crownStagger = 120;
-    Animated.stagger(crownStagger, [
-      Animated.timing(imgAnimation, {
-        toValue: 1,
-        duration,
-        useNativeDriver: true,
-      }),
-      Animated.timing(labelAnimation, {
-        toValue: 1,
-        duration,
-        useNativeDriver: true,
-      }),
-      Animated.timing(subtitleAnimation, {
-        toValue: 1,
-        duration,
-        useNativeDriver: true,
-      }),
-      Animated.timing(buttonAnimation, {
-        toValue: 1,
-        duration,
-        useNativeDriver: true,
-      }),
-      Animated.timing(paginationAnimation, {
-        toValue: 1,
-        duration,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  }, [
-    imgAnimation,
-    labelAnimation,
-    subtitleAnimation,
-    buttonAnimation,
-    paginationAnimation,
-  ]);
-
-  const animatedStyle = (animValue, offset = 14) => ({
-    opacity: animValue,
+  const animatedStyle = (
+    start,
+    end,
+    offset = 14,
+    withScale = false,
+    minOpacity = 0.12,
+  ) => ({
+    opacity: entranceProgress.interpolate({
+      inputRange: [start, end],
+      outputRange: [minOpacity, 1],
+      extrapolate: 'clamp',
+    }),
     transform: [
       {
-        translateY: animValue.interpolate({
-          inputRange: [0, 1],
+        translateY: entranceProgress.interpolate({
+          inputRange: [start, end],
           outputRange: [offset, 0],
+          extrapolate: 'clamp',
         }),
       },
+      ...(withScale
+        ? [
+            {
+              scale: entranceProgress.interpolate({
+                inputRange: [start, end],
+                outputRange: [0.996, 1],
+                extrapolate: 'clamp',
+              }),
+            },
+          ]
+        : []),
     ],
   });
 
   const handleNextPress = () => {
     crownCurrentStep < 2
       ? setCrownCurrentStep(crownCurrentStep + 1)
-      : navigation.replace('CrownOfInnerQuietSetNickname');
+      : navigation.replace('Nicnmsscrn');
   };
 
   return (
     <CrownOfInnerQuietLayout>
       <View style={styles.crownBox}>
         <Animated.View
-          style={[animatedStyle(imgAnimation, 28), styles.centerItem]}
+          style={[animatedStyle(0.0, 0.5, 14, true), styles.centerItem]}
         >
           <Image source={crownIntroData[crownCurrentStep].crwnimage} />
         </Animated.View>
 
         <View style={{ bottom: 150, alignItems: 'center' }}>
           <Animated.View
-            style={[animatedStyle(labelAnimation, 20), styles.crownTextBox]}
+            style={[animatedStyle(0.1, 0.7, 10), styles.crownTextBox]}
           >
             <Text style={styles.crownLabel}>
               {crownIntroData[crownCurrentStep].crwnlabel}
             </Text>
             <Animated.Text
-              style={[styles.crownSubtitle, { opacity: subtitleAnimation }]}
+              style={[
+                styles.crownSubtitle,
+                animatedStyle(0.16, 0.78, 6, false, 0.12),
+              ]}
               allowFontScaling={true}
               adjustsFontSizeToFit={Platform.OS === 'ios'}
             >
@@ -191,7 +146,7 @@ const CrownOfInnerQuietOnboarding = () => {
           </Animated.View>
 
           <Animated.View
-            style={[animatedStyle(buttonAnimation, 12), { marginTop: 18 }]}
+            style={[animatedStyle(0.3, 0.9, 4), { marginTop: 18 }]}
           >
             <CrownButton
               propsLabel={crownIntroData[crownCurrentStep].crwnbutton}
@@ -200,7 +155,7 @@ const CrownOfInnerQuietOnboarding = () => {
           </Animated.View>
 
           <Animated.View
-            style={[animatedStyle(paginationAnimation, 8), { marginTop: 18 }]}
+            style={[animatedStyle(0.4, 1, 2), { marginTop: 18 }]}
           >
             <CrownPagination crownCurrentStep={crownCurrentStep} />
           </Animated.View>
@@ -254,4 +209,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CrownOfInnerQuietOnboarding;
+export default Introducescrn;

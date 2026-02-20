@@ -20,7 +20,7 @@ const mediumF = 'Montserrat-Medium';
 const primaryWhite = '#FFFFFF';
 const secondaryWhite = '#FFFFFFCC';
 
-const CrownOfInnerQuietSetNickname = () => {
+const Nicnmsscrn = () => {
   const [crownNickname, setCrownNickname] = useState('');
   const navigation = useNavigation();
 
@@ -111,7 +111,7 @@ const CrownOfInnerQuietSetNickname = () => {
                 propsLabel={'Continue'}
                 btnColor={!crownNickname.trim() ? '#49607C' : '#93C2FA'}
                 propsOnPress={() =>
-                  navigation.replace('CrownOfInnerQuietEntry', {
+                  navigation.replace('Welcmscrn', {
                     crownNickname,
                   })
                 }
@@ -173,4 +173,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CrownOfInnerQuietSetNickname;
+export default Nicnmsscrn;

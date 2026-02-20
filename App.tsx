@@ -1,14 +1,14 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { StoreProvider } from './[WoltTresOfInnerQuiet]/[InnerWoltQuietStorage]/crownOfInnerQuietContext';
-import CrownOfInnerQuietStackNative from './[WoltTresOfInnerQuiet]/[TresInnerQuietRoutes]/CrownOfInnerQuietStackNative';
+import { NavigationContainer as Router } from '@react-navigation/native';
+import { ContextRoot } from './[WoltTresOfInnerQuiet]/[InnerWoltQuietStorage]/Context';
+import Stcknavigation from './[WoltTresOfInnerQuiet]/[TresInnerQuietRoutes]/Stcknavigation';
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <StoreProvider>
-        <CrownOfInnerQuietStackNative />
-      </StoreProvider>
-    </NavigationContainer>
+    <Router>
+      <ContextRoot>
+        <Stcknavigation />
+      </ContextRoot>
+    </Router>
   );
 };
 

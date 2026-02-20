@@ -15,9 +15,9 @@ import { useNavigation } from '@react-navigation/native';
 // Local imports
 import CrownOfInnerQuietLayout from '../[InnerQuietComponents]/CrownOfInnerQuietLayout';
 import CrownButton from '../[InnerQuietComponents]/CrownButton';
-import { useStorage } from '../[InnerWoltQuietStorage]/crownOfInnerQuietContext';
+import { useStorage } from '../[InnerWoltQuietStorage]/Context';
 
-const CrownOfInnerQuietDiary = () => {
+const Diaryscrn = () => {
   const navigation = useNavigation();
   const { note, setNote, saveNoteWithDate } = useStorage();
 
@@ -212,4 +212,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CrownOfInnerQuietDiary;
+export default Diaryscrn;

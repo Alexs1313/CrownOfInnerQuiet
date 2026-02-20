@@ -16,7 +16,7 @@ const CrownLoader = () => {
       setShowCrownIntroLogo(true);
 
       setTimeout(() => {
-        navigation.replace('CrownOfInnerQuietOnboarding');
+        navigation.replace('Introducescrn');
       }, 2000);
     }, 4000);
 
